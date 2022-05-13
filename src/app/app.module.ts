@@ -9,9 +9,7 @@ import { NovaTransferenciaComponent } from './nova-tranferencia/nova-transferenc
 @NgModule({
   declarations: [AppComponent, NovaTransferenciaComponent],
 
-  imports: [BrowserModule,
-     AppRoutingModule,
-    FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
 
   providers: [],
   bootstrap: [AppComponent],
