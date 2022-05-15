@@ -9,9 +9,10 @@ import { tipoTransferencia } from './interfaces/tipo-transferencia.interface';
 })
 export class AppComponent {
   title = 'primeiro-angular-alura';
+  transferencia: any;
 
-  transferir($event: tipoTransferencia) {
+  transferir($event: any) {
     console.log($event);
-
+    this.transferencia = $event;
   }
 }
