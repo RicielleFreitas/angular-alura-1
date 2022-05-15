@@ -9,10 +9,11 @@ import { tipoTransferencia } from './interfaces/tipo-transferencia.interface';
 })
 export class AppComponent {
   title = 'primeiro-angular-alura';
-  transferencia: any;
+  transferencias: any[] = [];
 
   transferir($event: any) {
     console.log($event);
-    this.transferencia = $event;
+    const transerencia = {...$event, data: new Date()}
+    this.transferencias.push(transerencia);
   }
 }

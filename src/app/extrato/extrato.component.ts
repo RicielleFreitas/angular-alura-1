@@ -1,5 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+interface transferencia {
+  data: Date;
+  valor: number;
+  destino: number;
+}
+
 @Component({
   selector: 'app-extrato',
   templateUrl: './extrato.component.html',
@@ -7,7 +13,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ExtratoComponent implements OnInit {
 
-  @Input() transferencia: any;
+  @Input()
+  transferencias: Array<transferencia> = [];
 
   constructor() { }
 
