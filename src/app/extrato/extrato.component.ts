@@ -1,3 +1,4 @@
+import { TransferenciaService } from './../Services/transferencia.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 interface transferencia {
@@ -13,12 +14,15 @@ interface transferencia {
 })
 export class ExtratoComponent implements OnInit {
 
-  @Input()
+
   transferencias: Array<transferencia> = [];
 
-  constructor() { }
+  constructor(private service: TransferenciaService) {
+
+   }
 
   ngOnInit() {
+       this.transferencias = this.service.transferencias;
   }
 
 }
