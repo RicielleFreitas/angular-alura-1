@@ -20,6 +20,7 @@ export class NovaTransferenciaComponent {
 
   transferir() {
     console.log('Solicitada nova Transferência');
+    debugger
     const valorEmitir: tipoTransferencia = {valor: this.valor, destino:this.destino}
     this.aoTransferir.emit(valorEmitir);
 

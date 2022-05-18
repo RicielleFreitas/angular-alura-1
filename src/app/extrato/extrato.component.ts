@@ -1,5 +1,6 @@
+import { Extratos } from './../../model/transferencia.model';
 import { TransferenciaService } from './../Services/transferencia.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface transferencia {
   data: Date;
@@ -10,19 +11,17 @@ interface transferencia {
 @Component({
   selector: 'app-extrato',
   templateUrl: './extrato.component.html',
-  styleUrls: ['./extrato.component.scss']
+  styleUrls: ['./extrato.component.scss'],
 })
 export class ExtratoComponent implements OnInit {
+  public transferencias: Array<Extratos> = [];
 
+  constructor(private readonly service: TransferenciaService) {}
 
-  transferencias: Array<transferencia> = [];
-
-  constructor(private service: TransferenciaService) {
-
-   }
-
-  ngOnInit() {
-       this.transferencias = this.service.transferencias;
+  public ngOnInit(): void {
+    this.service.todas().subscribe((transferenciaResponse: Array<Extratos>) => {
+      console.table(transferenciaResponse);
+      this.transferencias = transferenciaResponse;
+    });
   }
-
 }

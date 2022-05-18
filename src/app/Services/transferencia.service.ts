@@ -1,27 +1,35 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Extratos } from 'src/model/transferencia.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransferenciaService {
+  private listaTransferencia: any[];
+  private url = 'http://localhost:3000/listaDeExtratos';
 
-   private listaTransferencia: any[];
+  constructor(private httpClient: HttpClient) {
+    this.listaTransferencia = [];
+  }
 
-constructor() {
-  this.listaTransferencia = [];
-}
+  get transferencias() {
+    return this.listaTransferencia;
+  }
 
-get transferencias() {
-  return this.listaTransferencia;
-}
+  public todas(): Observable<Array<Extratos>> {
+    return this.httpClient.get<Array<Extratos>>(this.url);
+  }
 
-adicionar(transferencia: any) {
-  this.hidratar(transferencia)
-  this.listaTransferencia.push(transferencia);
-}
+  public adicionar(transferencia: any) {
+    debugger;
+    this.hidratar(transferencia);
+    this.listaTransferencia.push(transferencia);
+    console.log(this.listaTransferencia)
+  }
 
-private hidratar(transferencia: any) {
- transferencia.data = new Date();
-}
-
+  private hidratar(transferencia: any) {
+    transferencia.data = new Date();
+  }
 }
